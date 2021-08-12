@@ -1,0 +1,37 @@
+<form class="container text-center" autocomplete="off"  #f="ngForm" (ngSubmit)="login(f)" >
+    <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png" alt="" width="100" height="100">
+    <h1 class="h3 mb-3 fw-normal">Por favor, Ingrese sus credenciales de acceso</h1>
+
+    <div class="form-floating txt" [style.width.%]='30' [style.margin]="'auto'" >
+      <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com"
+             [(ngModel)]="userLogin.email" [ngModelOptions]="{standalone: false}" 
+             required
+             email
+      >
+      <label for="email" class="txt">Correo Electrónico</label>
+      <span *ngIf="f.dirty && f.controls.email.dirty && !f.controls.email.valid " style="color:red;"> Debe ser un email válido </span>
+    </div>
+    <div class="form-floating txt" [style.width.%]='30' [style.margin]="'auto'">
+      <input type="password" name="password" class="form-control" id="password" placeholder="Password"
+             [(ngModel)]="userLogin.password" [ngModelOptions]="{standalone: false}"
+             required
+             minlength="6"  
+      >
+      <label for="password" class="txt">Contraseña</label>
+      <span *ngIf="f.dirty && f.controls.password.dirty && !f.controls.password.valid" style="color:red;"> Tiene que tener al menos 6 dígitos</span>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me" 
+                [(ngModel)]="recordar" [ngModelOptions]="{standalone: true}">
+          <b class="ms-1">Recordar</b>
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary" type="submit" 
+            [style.width.%]='30' [style.margin]="'auto'"
+    >
+        Ingresar
+    </button>
+  </form>
+  
